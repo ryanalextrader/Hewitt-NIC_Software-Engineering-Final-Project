@@ -4,6 +4,78 @@ Project Backlog Link: https://sarah-mott.atlassian.net/jira/core/projects/WHIT/i
 
 NEW LINK FOR SPRINT BACKLOG: https://sarah-mott.atlassian.net/jira/software/projects/NIC/boards/1/backlog?selectedIssue=NIC-25&atlOrigin=eyJpIjoiYjYwZGM3MzE5NzAzNDQ0M2E0OGEyYWU4MTU2N2E2MDYiLCJwIjoiaiJ9 
 
+# Background
+
+Hewitt Learning is looking to develop a site to manage running the National Innovator Challenge competition (NIC). The site is intended to help streamline the process of running the competitions at a large scale. Our project is intended to automate the process
+of the competition rundown, instead of doing it manually through spreadsheets.
+
+# Objectives
+
+The objective of this project is design a site that facilitates the easier management of Hewitt's National Innovator Challenge Competitions. Some of the high priority project goals as defined by Hewitt include:
+
+1. Secure role-based access to site competitions, submissions, and feedback.
+2. Groups of students (or student guardians) should be able to upload submissions and view judge feedback.
+3. Judges should only be able to see assigned student submissions and evaluate the submissions based on a structured rubric.
+4. Administrators should be able to edit and control different competition details. Including creating competitions and setting relevant deadlines, manage assigned student groups and judges, and approve submitted judge evaluations.
+
+In addition, these are the secondary objectives as defined by Hewitt:
+
+1. Administrators should be able to view and export statistical data on competitions.
+2. The intellectual property of the students should be protected. Judges should not be able to download student submission materials. Additionally secure encryption methods should be used for communication.
+
+Finally, the design process was requested to keep these long-term feature goals in mind:
+
+1. Administrator and judge users should have access to a real-time statistical tracking dashboard for competition progress.
+2. Judges should be receive suggestions on what feedback to give a submission based on the assigned score.
+3. Students should be able to generate and download award certificates based on their submission evaluations.
+4. Competition sponsors and partners should have access to a competition statistical analysis reporting.
+
+Due to the large scale of this project and limited available time of project group members, the narrowed objective of this project is implement the basic role-based site infrastructure. There was also a strong emphasis on leaving the site in a good spot to handoff to Hewitt and other future contributors.
+
+More specifically, the objective is to implement the basic competition workflow. This includes allowing an admin-type user to create and manage competition judges and groups. Also, a guardian-type user should be able to create groups of students for a competition and view judged feedback. Lastly, a judge type user should able to see only assigned submissions for assigned competitions and submit feedback evaluations for those submissions.
+
+In addition, because this site will be used by a wide variety of people, there is an emphasis of ease of use and inclusion. We be use to use contrasting colors, repeated layouts, and large text to allow many users with different backgrounds to easily use the site. At the same time the site makes steps to be inclusive of those different cultures and/or gender orientations. This includes steps replacing references to last names with family names and allowing users to specify pronouns for themselves and students.
+
+# Development Tools
+
+This site is intended to be used on a desktop or laptop computer. As a result, the development framework primarily ulilized tools designed for desktop web development.
+
+## Frontend
+
+The site was built primarily using React. React was chosen due to some group members' previous experience using the framework. In addition, React has a large body of documentation and libraries available for use. As a result, the React component framework AntDesign was selected as a resource to make building the frontend easier. AntDesign was chosen because it has man components available for no price and each component has solid documentation and example code. In addition, AntDesign also has many customizations for global styling, which made the site designing process move faster and result in a better looking website.
+
+## Backend
+
+The backend was built around a MySQL server with a Django api framework. MySQL (and MySQL Workbench) were chosen due to previous team experience with these products. Any backend can be used for this project, but Django is currently configured to run with MySQL. Django was chosen for its extensive documentation and relatively easy implementation of encrypted user info management. In addition to Django the Axios framework is used to automatically handle user authentication keys when making database calls from the frontend.
+
+NOTE: All up to date version numbers can be found in README.md
+
+## Organization
+
+This organization for this project was facilitated primarily using WhitGit, a Whitworth-specific GitLab server, and Jira. WhitGit was use as the primary version control software. Like GitHub, it was used to maintain an up-to-date main branch as well as hold temporary feature branches. WhitGit was chosen by the Whitworth professors to make the project grading process similar. This project was organized through the Scrum system and Jira was the software to facilitate the sprint cycles. A Jira Scrum template was used to create the organization and enable the storage of background and sprint tasks. Jira was chosen as the Scrum manager due to its wide array of features and multiple team members having previous experience using the software for similar projects.
+
+# Site Roles
+
+The website is divided into three different roles: administrator(s), judge(s), and guardian(s)/participant(s). This to ensure that the users with different roles would not have access to information that are not meant to be disclosed. For instance, not all judge will have access to the submissions, only admin can do so. This step is ensured that the information are being kept undisclosed unless admin grant them access. Admin has the control over the competitions and will be the point person to delegate and grant access.
+
+## Administrator
+
+The administrator serves as the main controller for the website and competitions. An admin user should be able to: 1. Create and manage competitions. This includes choosing start/end dates and deadlines for the submission of participants and judges. 2. Create, edit, copy, delete, and assign rubrics to competitions. 3. Assign judges to a competition (accordingly based off their interest). 5. Manage, edit, and approve judge feedback before giving back to the participants.
+
+## Judge
+
+The judge is responsible for giving feedback to competition submissions.
+Judge will have access to: 1. See the project(s) they are assigned to. This includes the competition's details. 2. Give feedbacks to the projects (accordingly to the rubric that was created by the admin). 3. See graded and ungraded submissions for the current active competitions. 4. Ability to edit the submissions that they have graded before the deadlines.
+Judge will not have access to: 1. The participants' detailed information that are not being disclosed by admin. 2. See other's judges' grades on other submissions. 3. Submissions from participants they are not assigned to.
+
+## Guardian/ Participant
+
+The guardian/ participant is the user who will actually submit work for a competition. The role is intended to be used by a parent/teacher who will sign up for a competition on a student's behalf.
+The participant/ guardian will have access to: 1. Sign up for competitions (various times according to the number of students and projects) 2. See details for their active competitions and the upcoming competitions. 3. Submit their work for current competitions and resubmitting work as needed before deadlines or per admin's request. 4. See feedback from past competitions.
+The participant/ guardian will not have access to: 1. Access the judge's information. 2. Access the full feedbacks that are not being disclosed by admin.
+
+Please refer to DesignDoc.md for more information on the individual pages of the website.
+
 # Startup Guide
 ## Requirements
 * `Node` - tested with version `v22.14.0`
